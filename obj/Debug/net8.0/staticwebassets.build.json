@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TDq1E0Nz8rXMjW2a+uIvNygpWtcRPDxsfguqQNhQOiU=",
+  "Hash": "7xSxDAoDreB5/xOBjnp+ZD2kjqRNgzKJxZi0AOox2NE=",
   "Source": "BarraldevDownloader",
   "BasePath": "_content/BarraldevDownloader",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "BarraldevDownloader\\wwwroot",
       "Source": "BarraldevDownloader",
-      "ContentRoot": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\",
+      "ContentRoot": "C:\\Developer\\BarraldevDownloader\\wwwroot\\",
       "BasePath": "_content/BarraldevDownloader",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\app.css",
+      "Identity": "C:\\Developer\\BarraldevDownloader\\wwwroot\\app.css",
       "SourceId": "BarraldevDownloader",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\",
+      "ContentRoot": "C:\\Developer\\BarraldevDownloader\\wwwroot\\",
       "BasePath": "_content/BarraldevDownloader",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Developer\\BarraldevDownloader\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "BarraldevDownloader",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\",
+      "ContentRoot": "C:\\Developer\\BarraldevDownloader\\wwwroot\\",
       "BasePath": "_content/BarraldevDownloader",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Developer\\BarraldevDownloader\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "BarraldevDownloader",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\",
+      "ContentRoot": "C:\\Developer\\BarraldevDownloader\\wwwroot\\",
       "BasePath": "_content/BarraldevDownloader",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\favicon.png",
+      "Identity": "C:\\Developer\\BarraldevDownloader\\wwwroot\\favicon.png",
       "SourceId": "BarraldevDownloader",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\",
+      "ContentRoot": "C:\\Developer\\BarraldevDownloader\\wwwroot\\",
       "BasePath": "_content/BarraldevDownloader",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
-      "Identity": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\Logo.png",
+      "Identity": "C:\\Developer\\BarraldevDownloader\\wwwroot\\Logo.png",
       "SourceId": "BarraldevDownloader",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\",
+      "ContentRoot": "C:\\Developer\\BarraldevDownloader\\wwwroot\\",
       "BasePath": "_content/BarraldevDownloader",
       "RelativePath": "Logo.png",
       "AssetKind": "All",
