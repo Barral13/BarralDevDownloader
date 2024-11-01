@@ -1,0 +1,11 @@
+C:\Developer\Publish\BarraldevDownloader.exe
+C:\Developer\Publish\appsettings.Development.json
+C:\Developer\Publish\appsettings.json
+C:\Developer\Publish\BarraldevDownloader.dll
+C:\Developer\Publish\BarraldevDownloader.deps.json
+C:\Developer\Publish\BarraldevDownloader.runtimeconfig.json
+C:\Developer\Publish\BarraldevDownloader.pdb
+C:\Developer\Publish\AngleSharp.dll
+C:\Developer\Publish\Newtonsoft.Json.dll
+C:\Developer\Publish\Xabe.FFmpeg.dll
+C:\Developer\Publish\YoutubeExplode.dll
