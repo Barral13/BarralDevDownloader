@@ -12,7 +12,7 @@ public class DownloadService
     {
         _youtubeClient = youtubeClient;
     }
-
+    
     public async Task<string> DownloadAudioAsync(string videoUrl)
     {
         ValidateVideoUrl(videoUrl);
@@ -29,7 +29,11 @@ public class DownloadService
             throw new InvalidOperationException("Nenhum stream de áudio disponível.");
         }
 
-        var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", $"{video.Title}.mp3");
+        // Cria o diretório para os áudios, se não existir
+        var audioDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "Musicas");
+        Directory.CreateDirectory(audioDirectory); // Cria a pasta se não existir
+
+        var filePath = Path.Combine(audioDirectory, $"{video.Title}.mp3");
         await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, filePath);
 
         return filePath; // Retorna o caminho do arquivo baixado
@@ -56,9 +60,13 @@ public class DownloadService
             throw new InvalidOperationException("Nenhum stream de vídeo ou áudio disponível.");
         }
 
-        var videoFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", $"{video.Title}_video.mp4");
-        var audioFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", $"{video.Title}_audio.mp3");
-        var finalFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", $"{video.Title}.mp4");
+        // Cria o diretório para os vídeos, se não existir
+        var videoDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "Videos");
+        Directory.CreateDirectory(videoDirectory); // Cria a pasta se não existir
+
+        var videoFilePath = Path.Combine(videoDirectory, $"{video.Title}_video.mp4");
+        var audioFilePath = Path.Combine(videoDirectory, $"{video.Title}_audio.mp3");
+        var finalFilePath = Path.Combine(videoDirectory, $"{video.Title}.mp4");
 
         await _youtubeClient.Videos.Streams.DownloadAsync(videoStreamInfo, videoFilePath);
         await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, audioFilePath);
