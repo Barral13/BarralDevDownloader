@@ -1,0 +1,31 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page d-flex flex-column min-vh-100">
+    <header class="text-center p-2 bg-dark">
+        <div class="container d-flex align-items-center justify-content-between">
+            <img src="./Logo.png" alt="Logo Barral.dev" class="logo" style="max-width: 200px;" />
+            <div class="d-flex align-items-center text-white">
+                <a href="https://www.youtube.com" target="_blank" class="text-danger me-2">
+                    <i class="fab fa-youtube fa-2x"></i>
+                </a>
+                <p class="mb-0" style="font-size: 20px"><strong>YouTube</strong></p>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-fill">
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+
+    <footer class="text-center text-white py-3 bg-dark">
+        <p class="m-0">© 2024 Barral.dev Downloader. Todos os direitos reservados.</p>
+    </footer>
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>

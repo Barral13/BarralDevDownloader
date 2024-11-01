@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{35D8A35D-E509-4B0C-B1BB-E2E12A31DA74}|BarraldevDownloader.csproj|c:\\users\\dhanglersonb\\desktop\\projects\\barraldevdownloader\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35D8A35D-E509-4B0C-B1BB-E2E12A31DA74}|BarraldevDownloader.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35D8A35D-E509-4B0C-B1BB-E2E12A31DA74}|BarraldevDownloader.csproj|c:\\users\\dhanglersonb\\desktop\\projects\\barraldevdownloader\\wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{35D8A35D-E509-4B0C-B1BB-E2E12A31DA74}|BarraldevDownloader.csproj|solutionrelative:wwwroot\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "app.css",
+              "DocumentMoniker": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\app.css",
+              "RelativeDocumentMoniker": "wwwroot\\app.css",
+              "ToolTip": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\app.css*",
+              "RelativeToolTip": "wwwroot\\app.css*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-01T16:15:06.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACEAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-01T13:48:32.584Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

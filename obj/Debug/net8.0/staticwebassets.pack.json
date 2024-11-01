@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\Logo.png",
+      "PackagePath": "staticwebassets\\Logo.png"
+    },
+    {
+      "Id": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BarraldevDownloader.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BarraldevDownloader.props",
+      "PackagePath": "build\\BarraldevDownloader.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BarraldevDownloader.props",
+      "PackagePath": "buildMultiTargeting\\BarraldevDownloader.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BarraldevDownloader.props",
+      "PackagePath": "buildTransitive\\BarraldevDownloader.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,153 @@
+﻿@page "/"
+
+<PageTitle>Barral.dev Downloader</PageTitle>
+
+<div class="container-lg mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-8 col-sm-10">
+            <div class="text-center shadow-lg rounded bg-white border border-secondary p-4">
+                <h1 class="display-6 mt-3 text-black" style="text-shadow: 2px 2px 4px">
+                    <strong>
+                        Download de Mídia do YouTube
+                    </strong>
+                </h1>
+                <p class="text-muted">Insira o link do vídeo que deseja baixar:</p>
+
+                <div class="mt-4 w-75 m-auto">
+                    <input @bind="videoUrl" type="text" class="form-control border-secondary" placeholder="Cole o link do YouTube aqui..." />
+                </div>
+
+                <div class="d-flex gap-3 justify-content-center m-3 flex-wrap">
+                    <button class="btn btn-dark shadow-sm" @onclick="DownloadAudio" disabled="@isLoading">
+                        <i class="bi bi-music-note"></i> Baixar Música
+                    </button>
+                    <button class="btn btn-danger shadow-sm" @onclick="DownloadVideo" disabled="@isLoading">
+                        <i class="bi bi-camera-video"></i> Baixar Vídeo
+                    </button>
+                </div>
+
+                @if (isLoading)
+                {
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Carregando...</span>
+                    </div>
+                    <p class="mt-2" style="color: #0669e4; font-weight: bold; font-size: 18px">Aguarde, estamos processando seu download...</p> <!-- Mensagem durante o loading -->
+                }
+
+                @if (!string.IsNullOrEmpty(downloadMessage))
+                {
+                    <p class="mt-3 @(isError ? "text-error" : "text-success")">@downloadMessage</p>
+                }
+
+                <p class="mt-3 text-black w-75 m-auto">
+                    Esta aplicação permite downloads de músicas e vídeos através de links do YouTube de maneira simples e prática.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string videoUrl = string.Empty;
+    private string downloadMessage = string.Empty;
+    private bool isError;
+    private bool isLoading = false; // Variável para controle de loading
+
+    private async Task DownloadVideo()
+    {
+        if (string.IsNullOrEmpty(videoUrl))
+        {
+            downloadMessage = "Por favor, insira um link válido.";
+            isError = true;
+            await ShowTemporaryMessage();
+            return;
+        }
+
+        isLoading = true; // Inicia o loading
+        try
+        {
+            // Simulação do download do vídeo
+            string videoFileName = GetFileNameFromUrl(videoUrl, "video.mp4"); // Obter o nome do arquivo
+                                                                              // await SaveToFile(stream, videoFileName, "video");
+            await Task.Delay(3000); // Simula o tempo de download
+            downloadMessage = $"Vídeo baixado com sucesso em: Videos/{videoFileName}.";
+            isError = false;
+        }
+        catch (Exception ex)
+        {
+            downloadMessage = $"Erro ao baixar vídeo: {ex.Message}";
+            isError = true;
+        }
+        finally
+        {
+            isLoading = false; // Finaliza o loading
+            await ShowTemporaryMessage(); // Mostra a mensagem temporária
+        }
+    }
+
+    private async Task DownloadAudio()
+    {
+        if (string.IsNullOrEmpty(videoUrl))
+        {
+            downloadMessage = "Por favor, insira um link válido.";
+            isError = true;
+            await ShowTemporaryMessage();
+            return;
+        }
+
+        isLoading = true; // Inicia o loading
+        try
+        {
+            // Simulação do download do áudio
+            string audioFileName = GetFileNameFromUrl(videoUrl, "audio.mp3"); // Obter o nome do arquivo
+                                                                              // await SaveToFile(stream, audioFileName, "audio");
+            await Task.Delay(3000); // Simula o tempo de download
+            downloadMessage = $"Áudio baixado com sucesso em: Musicas/{audioFileName}.";
+            isError = false;
+        }
+        catch (Exception ex)
+        {
+            downloadMessage = $"Erro ao baixar áudio: {ex.Message}";
+            isError = true;
+        }
+        finally
+        {
+            isLoading = false; // Finaliza o loading
+            await ShowTemporaryMessage(); // Mostra a mensagem temporária
+        }
+    }
+
+    private async Task ShowTemporaryMessage()
+    {
+        StateHasChanged(); // Atualiza a interface do usuário imediatamente
+        await Task.Delay(3000); // Espera 3 segundos
+        downloadMessage = string.Empty; // Limpa a mensagem
+        StateHasChanged(); // Atualiza a interface do usuário novamente
+    }
+
+    private async Task SaveToFile(MemoryStream stream, string fileName, string fileType)
+    {
+        // Defina o caminho base onde os arquivos serão salvos
+        string basePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+
+        // Crie os diretórios se não existirem
+        string directoryPath = fileType == "video" ? Path.Combine(basePath, "Videos") : Path.Combine(basePath, "Musicas");
+        Directory.CreateDirectory(directoryPath); // Cria o diretório se não existir
+
+        // Combine o diretório com o nome do arquivo
+        string filePath = Path.Combine(directoryPath, fileName);
+
+        using var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+        stream.Position = 0; // Garantir que estamos no início do stream
+        await stream.CopyToAsync(fileStream);
+    }
+
+    private string GetFileNameFromUrl(string url, string defaultFileName)
+    {
+        // Extraia o ID do vídeo da URL para gerar um nome de arquivo único (exemplo)
+        // Este é um exemplo simples, ajuste conforme necessário
+        var uri = new Uri(url);
+        var videoId = System.Web.HttpUtility.ParseQueryString(uri.Query).Get("v");
+        return string.IsNullOrEmpty(videoId) ? defaultFileName : $"{videoId}_{defaultFileName}";
+    }
+}
