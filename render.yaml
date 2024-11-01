@@ -1,0 +1,9 @@
+﻿version: 1
+services:
+  - type: web
+    name: barraldev-downloader
+    env: dotnet
+    buildCommand: dotnet publish -c Release -o out
+    startCommand: dotnet out/BarraldevDownloader.dll
+    plan: free
+    autoDeploy: true

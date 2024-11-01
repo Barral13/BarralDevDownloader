@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using BarraldevDownloader.Services
 
 <PageTitle>Barral.dev Downloader</PageTitle>
 
@@ -31,7 +32,7 @@
                     <div class="spinner-border text-primary" role="status">
                         <span class="visually-hidden">Carregando...</span>
                     </div>
-                    <p class="mt-2" style="color: #0669e4; font-weight: bold; font-size: 18px">Aguarde, estamos processando seu download...</p> <!-- Mensagem durante o loading -->
+                    <p class="mt-2" style="color: #0669e4; font-weight: bold; font-size: 18px">Aguarde, estamos processando seu download...</p>
                 }
 
                 @if (!string.IsNullOrEmpty(downloadMessage))
@@ -51,7 +52,10 @@
     private string videoUrl = string.Empty;
     private string downloadMessage = string.Empty;
     private bool isError;
-    private bool isLoading = false; // Variável para controle de loading
+    private bool isLoading = false;
+
+    [Inject]
+    private DownloadService DownloadService { get; set; } // Injeta o serviço de download
 
     private async Task DownloadVideo()
     {
@@ -63,14 +67,11 @@
             return;
         }
 
-        isLoading = true; // Inicia o loading
+        isLoading = true;
         try
         {
-            // Simulação do download do vídeo
-            string videoFileName = GetFileNameFromUrl(videoUrl, "video.mp4"); // Obter o nome do arquivo
-                                                                              // await SaveToFile(stream, videoFileName, "video");
-            await Task.Delay(3000); // Simula o tempo de download
-            downloadMessage = $"Vídeo baixado com sucesso em: Videos/{videoFileName}.";
+            var filePath = await DownloadService.DownloadVideoAsync(videoUrl);
+            downloadMessage = $"Vídeo baixado com sucesso em: {filePath}.";
             isError = false;
         }
         catch (Exception ex)
@@ -80,8 +81,8 @@
         }
         finally
         {
-            isLoading = false; // Finaliza o loading
-            await ShowTemporaryMessage(); // Mostra a mensagem temporária
+            isLoading = false;
+            await ShowTemporaryMessage();
         }
     }
 
@@ -95,14 +96,11 @@
             return;
         }
 
-        isLoading = true; // Inicia o loading
+        isLoading = true;
         try
         {
-            // Simulação do download do áudio
-            string audioFileName = GetFileNameFromUrl(videoUrl, "audio.mp3"); // Obter o nome do arquivo
-                                                                              // await SaveToFile(stream, audioFileName, "audio");
-            await Task.Delay(3000); // Simula o tempo de download
-            downloadMessage = $"Áudio baixado com sucesso em: Musicas/{audioFileName}.";
+            var filePath = await DownloadService.DownloadAudioAsync(videoUrl);
+            downloadMessage = $"Áudio baixado com sucesso em: {filePath}.";
             isError = false;
         }
         catch (Exception ex)
@@ -112,42 +110,16 @@
         }
         finally
         {
-            isLoading = false; // Finaliza o loading
-            await ShowTemporaryMessage(); // Mostra a mensagem temporária
+            isLoading = false;
+            await ShowTemporaryMessage();
         }
     }
 
     private async Task ShowTemporaryMessage()
     {
-        StateHasChanged(); // Atualiza a interface do usuário imediatamente
-        await Task.Delay(3000); // Espera 3 segundos
-        downloadMessage = string.Empty; // Limpa a mensagem
-        StateHasChanged(); // Atualiza a interface do usuário novamente
-    }
-
-    private async Task SaveToFile(MemoryStream stream, string fileName, string fileType)
-    {
-        // Defina o caminho base onde os arquivos serão salvos
-        string basePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
-
-        // Crie os diretórios se não existirem
-        string directoryPath = fileType == "video" ? Path.Combine(basePath, "Videos") : Path.Combine(basePath, "Musicas");
-        Directory.CreateDirectory(directoryPath); // Cria o diretório se não existir
-
-        // Combine o diretório com o nome do arquivo
-        string filePath = Path.Combine(directoryPath, fileName);
-
-        using var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
-        stream.Position = 0; // Garantir que estamos no início do stream
-        await stream.CopyToAsync(fileStream);
-    }
-
-    private string GetFileNameFromUrl(string url, string defaultFileName)
-    {
-        // Extraia o ID do vídeo da URL para gerar um nome de arquivo único (exemplo)
-        // Este é um exemplo simples, ajuste conforme necessário
-        var uri = new Uri(url);
-        var videoId = System.Web.HttpUtility.ParseQueryString(uri.Query).Get("v");
-        return string.IsNullOrEmpty(videoId) ? defaultFileName : $"{videoId}_{defaultFileName}";
+        StateHasChanged();
+        await Task.Delay(5000);
+        downloadMessage = string.Empty;
+        StateHasChanged();
     }
 }

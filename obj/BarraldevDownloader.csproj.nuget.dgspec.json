@@ -1,28 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\BarraldevDownloader.csproj": {}
+    "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\BarraldevDownloader.csproj": {
+    "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\BarraldevDownloader.csproj",
+        "projectUniqueName": "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj",
         "projectName": "BarraldevDownloader",
-        "projectPath": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\BarraldevDownloader.csproj",
-        "packagesPath": "C:\\Users\\dhanglersonb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dhanglersonb\\Desktop\\Projects\\BarraldevDownloader\\obj\\",
+        "projectPath": "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj",
+        "packagesPath": "C:\\Users\\Dhanglerson Dev\\.nuget\\packages\\",
+        "outputPath": "C:\\Developer\\BarraldevDownloader\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dhanglersonb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Dhanglerson Dev\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,6 +42,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Xabe.FFmpeg": {
+              "target": "Package",
+              "version": "[5.2.6, )"
+            },
+            "YoutubeExplode": {
+              "target": "Package",
+              "version": "[6.4.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -64,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

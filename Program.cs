@@ -1,16 +1,19 @@
 using BarraldevDownloader.Components;
-//using BarraldevDownloader.Services; 
+using BarraldevDownloader.Services;
+
+using YoutubeExplode;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-//builder.Services.AddSingleton<DownloadService>(); // Registro do serviço de download
+
+builder.Services.AddSingleton<YoutubeClient>();
+
+builder.Services.AddSingleton<DownloadService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
@@ -19,7 +22,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseRouting();
 app.UseAntiforgery();
+app.UseAuthorization();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
