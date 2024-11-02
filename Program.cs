@@ -1,5 +1,4 @@
 using BarraldevDownloader.Components;
-using BarraldevDownloader.Services;
 
 using YoutubeExplode;
 
@@ -9,7 +8,6 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddSingleton<YoutubeClient>();
-
 builder.Services.AddSingleton<DownloadService>();
 
 var app = builder.Build();

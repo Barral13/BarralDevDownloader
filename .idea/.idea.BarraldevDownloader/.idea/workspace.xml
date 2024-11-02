@@ -11,6 +11,23 @@
   <component name="ChangeListManager">
     <list default="true" id="2b97da9e-8251-4415-a71f-7cf6e38413f2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BarraldevDownloader/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BarraldevDownloader/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Components/Pages/Home.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Components/Pages/Home.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Services/DownloadService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/DownloadService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/BarraldevDownloader.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/BarraldevDownloader.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/BarraldevDownloader.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/BarraldevDownloader.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net8.0/BarraldevDownloader.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net8.0/BarraldevDownloader.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BarraldevDownloader.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BarraldevDownloader.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BarraldevDownloader.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BarraldevDownloader.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BarraldevDownloader.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BarraldevDownloader.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BarraldevDownloader.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BarraldevDownloader.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/BarraldevDownloader.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/BarraldevDownloader.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/ref/BarraldevDownloader.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/ref/BarraldevDownloader.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net8.0/refint/BarraldevDownloader.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net8.0/refint/BarraldevDownloader.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/net8.0/BarraldevDownloader.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Release/net8.0/BarraldevDownloader.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/net8.0/BarraldevDownloader.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Release/net8.0/BarraldevDownloader.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Release/net8.0/BarraldevDownloader.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Release/net8.0/BarraldevDownloader.sourcelink.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +129,7 @@
       <workItem from="1730489459717" duration="5120000" />
       <workItem from="1730496389143" duration="3065000" />
       <workItem from="1730505801868" duration="748000" />
-      <workItem from="1730506806128" duration="1007000" />
+      <workItem from="1730506806128" duration="4900000" />
     </task>
     <servers />
   </component>

@@ -1,8 +1,6 @@
-﻿using YoutubeExplode;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using Xabe.FFmpeg;
-
-namespace BarraldevDownloader.Services;
+using YoutubeExplode;
 
 public class DownloadService
 {
@@ -29,7 +27,7 @@ public class DownloadService
             throw new InvalidOperationException("Nenhum stream de áudio disponível.");
         }
 
-        // Cria o diretório para os áudios, se não existir
+        // Usa o diretório padrão de Downloads do sistema
         var audioDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "Musicas");
         Directory.CreateDirectory(audioDirectory); // Cria a pasta se não existir
 
@@ -60,7 +58,7 @@ public class DownloadService
             throw new InvalidOperationException("Nenhum stream de vídeo ou áudio disponível.");
         }
 
-        // Cria o diretório para os vídeos, se não existir
+        // Usa o diretório padrão de Downloads do sistema
         var videoDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "Videos");
         Directory.CreateDirectory(videoDirectory); // Cria a pasta se não existir
 
@@ -71,6 +69,7 @@ public class DownloadService
         await _youtubeClient.Videos.Streams.DownloadAsync(videoStreamInfo, videoFilePath);
         await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, audioFilePath);
 
+        // Concatena o vídeo e o áudio
         await FFmpeg.Conversions.New()
             .AddParameter($"-i \"{videoFilePath}\"")
             .AddParameter($"-i \"{audioFilePath}\"")
@@ -78,6 +77,7 @@ public class DownloadService
             .AddParameter($"\"{finalFilePath}\"")
             .Start();
 
+        // Remove os arquivos temporários
         File.Delete(videoFilePath);
         File.Delete(audioFilePath);
 
