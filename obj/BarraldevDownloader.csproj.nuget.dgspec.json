@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj": {}
+    "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\BarraldevDownloader.csproj": {}
   },
   "projects": {
-    "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj": {
+    "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\BarraldevDownloader.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj",
+        "projectUniqueName": "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\BarraldevDownloader.csproj",
         "projectName": "BarraldevDownloader",
-        "projectPath": "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj",
+        "projectPath": "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\BarraldevDownloader.csproj",
         "packagesPath": "C:\\Users\\Dhanglerson Dev\\.nuget\\packages\\",
-        "outputPath": "C:\\Developer\\BarraldevDownloader\\obj\\",
+        "outputPath": "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dhanglerson Dev\\AppData\\Roaming\\NuGet\\NuGet.Config"

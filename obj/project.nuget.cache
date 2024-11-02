@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "960tspsVG44=",
+  "dgSpecHash": "iTGcLl2XtHI=",
   "success": true,
-  "projectFilePath": "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj",
+  "projectFilePath": "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\BarraldevDownloader.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dhanglerson Dev\\.nuget\\packages\\anglesharp\\1.1.2\\anglesharp.1.1.2.nupkg.sha512",
     "C:\\Users\\Dhanglerson Dev\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
