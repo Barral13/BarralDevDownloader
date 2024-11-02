@@ -10,7 +10,7 @@ public class DownloadService
     {
         _youtubeClient = youtubeClient;
     }
-    
+
     public async Task<string> DownloadAudioAsync(string videoUrl)
     {
         ValidateVideoUrl(videoUrl);
@@ -28,13 +28,23 @@ public class DownloadService
         }
 
         // Usa o diretório padrão de Downloads do sistema
-        var audioDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "Musicas");
-        Directory.CreateDirectory(audioDirectory); // Cria a pasta se não existir
-
-        var filePath = Path.Combine(audioDirectory, $"{video.Title}.mp3");
+        var downloadsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads";
+        var filePath = Path.Combine(downloadsDirectory, $"{video.Title}.mp3");
         await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, filePath);
 
-        return filePath; // Retorna o caminho do arquivo baixado
+        // Cria a pasta Musicas se não existir
+        var musicDirectory = Path.Combine(downloadsDirectory, "Musicas");
+        Directory.CreateDirectory(musicDirectory); // Cria a pasta se não existir
+
+        // Move o arquivo de áudio para a pasta Musicas
+        var newFilePath = Path.Combine(musicDirectory, $"{video.Title}.mp3");
+        if (File.Exists(newFilePath))
+        {
+            File.Delete(newFilePath); // Remove o arquivo se já existir
+        }
+        File.Move(filePath, newFilePath);
+
+        return newFilePath; // Retorna o caminho do arquivo movido
     }
 
     public async Task<string> DownloadVideoAsync(string videoUrl)
@@ -59,12 +69,12 @@ public class DownloadService
         }
 
         // Usa o diretório padrão de Downloads do sistema
-        var videoDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "Videos");
-        Directory.CreateDirectory(videoDirectory); // Cria a pasta se não existir
+        var downloadsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads";
 
-        var videoFilePath = Path.Combine(videoDirectory, $"{video.Title}_video.mp4");
-        var audioFilePath = Path.Combine(videoDirectory, $"{video.Title}_audio.mp3");
-        var finalFilePath = Path.Combine(videoDirectory, $"{video.Title}.mp4");
+        // Define os caminhos dos arquivos temporários
+        var videoFilePath = Path.Combine(downloadsDirectory, $"{video.Title}_video.mp4");
+        var audioFilePath = Path.Combine(downloadsDirectory, $"{video.Title}_audio.mp3");
+        var finalFilePath = Path.Combine(downloadsDirectory, $"{video.Title}.mp4");
 
         await _youtubeClient.Videos.Streams.DownloadAsync(videoStreamInfo, videoFilePath);
         await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, audioFilePath);
@@ -77,11 +87,23 @@ public class DownloadService
             .AddParameter($"\"{finalFilePath}\"")
             .Start();
 
+        // Cria a pasta Videos se não existir
+        var videoDirectory = Path.Combine(downloadsDirectory, "Videos");
+        Directory.CreateDirectory(videoDirectory); // Cria a pasta se não existir
+
+        // Move o arquivo final para a pasta Videos
+        var finalVideoPath = Path.Combine(videoDirectory, $"{video.Title}.mp4");
+        if (File.Exists(finalVideoPath))
+        {
+            File.Delete(finalVideoPath); // Remove o arquivo se já existir
+        }
+        File.Move(finalFilePath, finalVideoPath);
+
         // Remove os arquivos temporários
         File.Delete(videoFilePath);
         File.Delete(audioFilePath);
 
-        return finalFilePath; // Retorna o caminho do arquivo baixado
+        return finalVideoPath; // Retorna o caminho do arquivo final movido
     }
 
     private void ValidateVideoUrl(string videoUrl)
