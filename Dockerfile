@@ -17,8 +17,4 @@ COPY --from=build /app/publish .
 # Expor a porta 80
 EXPOSE 80
 
-# Definir variáveis de ambiente
-ENV MUSICAS_DIRECTORY=C:\\Downloads\\Musicas
-ENV VIDEOS_DIRECTORY=C:\\Downloads\\Videos
-
 ENTRYPOINT ["dotnet", "BarraldevDownloader.dll"]

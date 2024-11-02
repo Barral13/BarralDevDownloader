@@ -1,24 +1,18 @@
-﻿using System.Text.RegularExpressions;
+﻿using YoutubeExplode;
+using System.Text.RegularExpressions;
 using Xabe.FFmpeg;
-using YoutubeExplode;
+
+namespace BarraldevDownloader.Services;
 
 public class DownloadService
 {
     private readonly YoutubeClient _youtubeClient;
-    private readonly string _musicasDirectory;
-    private readonly string _videosDirectory;
 
     public DownloadService(YoutubeClient youtubeClient)
     {
         _youtubeClient = youtubeClient;
-
-        // Obter os diretórios de download a partir de variáveis de ambiente
-        _musicasDirectory = Path.Combine("C:\\Downloads", "Musicas");
-        _videosDirectory = Path.Combine("C:\\Downloads", "Videos");
-
-        CreateDirectories();
     }
-
+    
     public async Task<string> DownloadAudioAsync(string videoUrl)
     {
         ValidateVideoUrl(videoUrl);
@@ -35,8 +29,11 @@ public class DownloadService
             throw new InvalidOperationException("Nenhum stream de áudio disponível.");
         }
 
-        var cleanedTitle = CleanFileName(video.Title);
-        var filePath = Path.Combine(_musicasDirectory, $"{cleanedTitle}.mp3");
+        // Cria o diretório para os áudios, se não existir
+        var audioDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "Musicas");
+        Directory.CreateDirectory(audioDirectory); // Cria a pasta se não existir
+
+        var filePath = Path.Combine(audioDirectory, $"{video.Title}.mp3");
         await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, filePath);
 
         return filePath; // Retorna o caminho do arquivo baixado
@@ -63,17 +60,17 @@ public class DownloadService
             throw new InvalidOperationException("Nenhum stream de vídeo ou áudio disponível.");
         }
 
-        var cleanedTitle = CleanFileName(video.Title);
+        // Cria o diretório para os vídeos, se não existir
+        var videoDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "Videos");
+        Directory.CreateDirectory(videoDirectory); // Cria a pasta se não existir
 
-        // Define os caminhos dos arquivos temporários
-        var videoFilePath = Path.Combine(_videosDirectory, $"{cleanedTitle}_video.mp4");
-        var audioFilePath = Path.Combine(_videosDirectory, $"{cleanedTitle}_audio.mp3");
-        var finalFilePath = Path.Combine(_videosDirectory, $"{cleanedTitle}.mp4");
+        var videoFilePath = Path.Combine(videoDirectory, $"{video.Title}_video.mp4");
+        var audioFilePath = Path.Combine(videoDirectory, $"{video.Title}_audio.mp3");
+        var finalFilePath = Path.Combine(videoDirectory, $"{video.Title}.mp4");
 
         await _youtubeClient.Videos.Streams.DownloadAsync(videoStreamInfo, videoFilePath);
         await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, audioFilePath);
 
-        // Concatena o vídeo e o áudio
         await FFmpeg.Conversions.New()
             .AddParameter($"-i \"{videoFilePath}\"")
             .AddParameter($"-i \"{audioFilePath}\"")
@@ -81,11 +78,10 @@ public class DownloadService
             .AddParameter($"\"{finalFilePath}\"")
             .Start();
 
-        // Remove os arquivos temporários
         File.Delete(videoFilePath);
         File.Delete(audioFilePath);
 
-        return finalFilePath; // Retorna o caminho do arquivo final
+        return finalFilePath; // Retorna o caminho do arquivo baixado
     }
 
     private void ValidateVideoUrl(string videoUrl)
@@ -106,33 +102,5 @@ public class DownloadService
         var regex = new Regex(@"(?<=v=|\/)([a-zA-Z0-9_-]{11})");
         var match = regex.Match(url);
         return match.Success ? match.Value : null;
-    }
-
-    private string CleanFileName(string fileName)
-    {
-        var invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
-        var regex = new Regex($"[{invalidChars}]");
-        return regex.Replace(fileName, "_"); // Substitui caracteres inválidos por "_"
-    }
-
-    private void CreateDirectories()
-    {
-        // Cria o diretório Downloads se não existir
-        var downloadsDirectory = Path.Combine("C:\\", "Downloads");
-        if (!Directory.Exists(downloadsDirectory))
-        {
-            Directory.CreateDirectory(downloadsDirectory);
-        }
-
-        // Cria as pastas Musicas e Videos dentro do diretório Downloads se não existirem
-        if (!Directory.Exists(_musicasDirectory))
-        {
-            Directory.CreateDirectory(_musicasDirectory); // Cria a pasta "Musicas"
-        }
-
-        if (!Directory.Exists(_videosDirectory))
-        {
-            Directory.CreateDirectory(_videosDirectory); // Cria a pasta "Videos"
-        }
     }
 }
