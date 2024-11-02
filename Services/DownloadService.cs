@@ -27,24 +27,13 @@ public class DownloadService
             throw new InvalidOperationException("Nenhum stream de áudio disponível.");
         }
 
-        // Usa o diretório padrão de Downloads do sistema
-        var downloadsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads";
-        var filePath = Path.Combine(downloadsDirectory, $"{video.Title}.mp3");
+        // Define o diretório Downloads de forma manual
+        string musicasDirectory = GetMusicasDirectory();
+        var cleanedTitle = CleanFileName(video.Title);
+        var filePath = Path.Combine(musicasDirectory, $"{cleanedTitle}.mp3");
         await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, filePath);
 
-        // Cria a pasta Musicas se não existir
-        var musicDirectory = Path.Combine(downloadsDirectory, "Musicas");
-        Directory.CreateDirectory(musicDirectory); // Cria a pasta se não existir
-
-        // Move o arquivo de áudio para a pasta Musicas
-        var newFilePath = Path.Combine(musicDirectory, $"{video.Title}.mp3");
-        if (File.Exists(newFilePath))
-        {
-            File.Delete(newFilePath); // Remove o arquivo se já existir
-        }
-        File.Move(filePath, newFilePath);
-
-        return newFilePath; // Retorna o caminho do arquivo movido
+        return filePath; // Retorna o caminho do arquivo baixado
     }
 
     public async Task<string> DownloadVideoAsync(string videoUrl)
@@ -68,13 +57,14 @@ public class DownloadService
             throw new InvalidOperationException("Nenhum stream de vídeo ou áudio disponível.");
         }
 
-        // Usa o diretório padrão de Downloads do sistema
-        var downloadsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads";
+        // Define o diretório Downloads de forma manual
+        string videosDirectory = GetVideosDirectory();
+        var cleanedTitle = CleanFileName(video.Title);
 
         // Define os caminhos dos arquivos temporários
-        var videoFilePath = Path.Combine(downloadsDirectory, $"{video.Title}_video.mp4");
-        var audioFilePath = Path.Combine(downloadsDirectory, $"{video.Title}_audio.mp3");
-        var finalFilePath = Path.Combine(downloadsDirectory, $"{video.Title}.mp4");
+        var videoFilePath = Path.Combine(videosDirectory, $"{cleanedTitle}_video.mp4");
+        var audioFilePath = Path.Combine(videosDirectory, $"{cleanedTitle}_audio.mp3");
+        var finalFilePath = Path.Combine(videosDirectory, $"{cleanedTitle}.mp4");
 
         await _youtubeClient.Videos.Streams.DownloadAsync(videoStreamInfo, videoFilePath);
         await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, audioFilePath);
@@ -87,23 +77,11 @@ public class DownloadService
             .AddParameter($"\"{finalFilePath}\"")
             .Start();
 
-        // Cria a pasta Videos se não existir
-        var videoDirectory = Path.Combine(downloadsDirectory, "Videos");
-        Directory.CreateDirectory(videoDirectory); // Cria a pasta se não existir
-
-        // Move o arquivo final para a pasta Videos
-        var finalVideoPath = Path.Combine(videoDirectory, $"{video.Title}.mp4");
-        if (File.Exists(finalVideoPath))
-        {
-            File.Delete(finalVideoPath); // Remove o arquivo se já existir
-        }
-        File.Move(finalFilePath, finalVideoPath);
-
         // Remove os arquivos temporários
         File.Delete(videoFilePath);
         File.Delete(audioFilePath);
 
-        return finalVideoPath; // Retorna o caminho do arquivo final movido
+        return finalFilePath; // Retorna o caminho do arquivo final
     }
 
     private void ValidateVideoUrl(string videoUrl)
@@ -124,5 +102,39 @@ public class DownloadService
         var regex = new Regex(@"(?<=v=|\/)([a-zA-Z0-9_-]{11})");
         var match = regex.Match(url);
         return match.Success ? match.Value : null;
+    }
+
+    private string CleanFileName(string fileName)
+    {
+        // Remove caracteres inválidos do nome do arquivo
+        var invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
+        var regex = new Regex($"[{invalidChars}]");
+        return regex.Replace(fileName, "_"); // Substitui caracteres inválidos por "_"
+    }
+
+    private string GetMusicasDirectory()
+    {
+        string downloadsDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+        string musicasDirectory = Path.Combine(downloadsDirectory, "Musicas");
+
+        if (!Directory.Exists(musicasDirectory))
+        {
+            Directory.CreateDirectory(musicasDirectory); // Cria a pasta "Musicas" se não existir
+        }
+
+        return musicasDirectory;
+    }
+
+    private string GetVideosDirectory()
+    {
+        string downloadsDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+        string videosDirectory = Path.Combine(downloadsDirectory, "Videos");
+
+        if (!Directory.Exists(videosDirectory))
+        {
+            Directory.CreateDirectory(videosDirectory); // Cria a pasta "Videos" se não existir
+        }
+
+        return videosDirectory;
     }
 }
