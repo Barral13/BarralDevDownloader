@@ -18,7 +18,7 @@ COPY --from=build /app/publish .
 EXPOSE 80
 
 # Definir variáveis de ambiente
-ENV MUSICAS_DIRECTORY=/downloads/musicas
-ENV VIDEOS_DIRECTORY=/downloads/videos
+ENV MUSICAS_DIRECTORY=C:\\Downloads\\Musicas
+ENV VIDEOS_DIRECTORY=C:\\Downloads\\Videos
 
 ENTRYPOINT ["dotnet", "BarraldevDownloader.dll"]

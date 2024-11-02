@@ -13,8 +13,8 @@ public class DownloadService
         _youtubeClient = youtubeClient;
 
         // Obter os diretórios de download a partir de variáveis de ambiente
-        _musicasDirectory = Environment.GetEnvironmentVariable("MUSICAS_DIRECTORY") ?? "/downloads/musicas";
-        _videosDirectory = Environment.GetEnvironmentVariable("VIDEOS_DIRECTORY") ?? "/downloads/videos";
+        _musicasDirectory = Path.Combine("C:\\Downloads", "Musicas");
+        _videosDirectory = Path.Combine("C:\\Downloads", "Videos");
 
         CreateDirectories();
     }
@@ -117,14 +117,22 @@ public class DownloadService
 
     private void CreateDirectories()
     {
+        // Cria o diretório Downloads se não existir
+        var downloadsDirectory = Path.Combine("C:\\", "Downloads");
+        if (!Directory.Exists(downloadsDirectory))
+        {
+            Directory.CreateDirectory(downloadsDirectory);
+        }
+
+        // Cria as pastas Musicas e Videos dentro do diretório Downloads se não existirem
         if (!Directory.Exists(_musicasDirectory))
         {
-            Directory.CreateDirectory(_musicasDirectory); // Cria a pasta "Musicas" se não existir
+            Directory.CreateDirectory(_musicasDirectory); // Cria a pasta "Musicas"
         }
 
         if (!Directory.Exists(_videosDirectory))
         {
-            Directory.CreateDirectory(_videosDirectory); // Cria a pasta "Videos" se não existir
+            Directory.CreateDirectory(_videosDirectory); // Cria a pasta "Videos"
         }
     }
 }
