@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\BarraldevDownloader.csproj": {}
+    "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\BarraldevDownloader.csproj": {
+    "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\BarraldevDownloader.csproj",
+        "projectUniqueName": "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj",
         "projectName": "BarraldevDownloader",
-        "projectPath": "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\BarraldevDownloader.csproj",
+        "projectPath": "C:\\Developer\\BarraldevDownloader\\BarraldevDownloader.csproj",
         "packagesPath": "C:\\Users\\Dhanglerson Dev\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\obj\\",
+        "outputPath": "C:\\Developer\\BarraldevDownloader\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dhanglerson Dev\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -43,6 +43,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Components.Web": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Xabe.FFmpeg": {
               "target": "Package",
               "version": "[5.2.6, )"

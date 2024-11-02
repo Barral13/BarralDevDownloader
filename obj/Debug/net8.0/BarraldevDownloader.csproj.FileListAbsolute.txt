@@ -24,39 +24,6 @@ C:\Users\dhanglersonb\Desktop\Projects\BarraldevDownloader\obj\Debug\net8.0\refi
 C:\Users\dhanglersonb\Desktop\Projects\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.pdb
 C:\Users\dhanglersonb\Desktop\Projects\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.genruntimeconfig.cache
 C:\Users\dhanglersonb\Desktop\Projects\BarraldevDownloader\obj\Debug\net8.0\ref\BarraldevDownloader.dll
-C:\Developer\BarraldevDownloader\bin\Debug\net8.0\appsettings.Development.json
-C:\Developer\BarraldevDownloader\bin\Debug\net8.0\appsettings.json
-C:\Developer\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.staticwebassets.runtime.json
-C:\Developer\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.exe
-C:\Developer\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.deps.json
-C:\Developer\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.runtimeconfig.json
-C:\Developer\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.dll
-C:\Developer\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.pdb
-C:\Developer\BarraldevDownloader\bin\Debug\net8.0\AngleSharp.dll
-C:\Developer\BarraldevDownloader\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\Developer\BarraldevDownloader\bin\Debug\net8.0\Xabe.FFmpeg.dll
-C:\Developer\BarraldevDownloader\bin\Debug\net8.0\YoutubeExplode.dll
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.csproj.AssemblyReference.cache
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.GeneratedMSBuildEditorConfig.editorconfig
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.AssemblyInfoInputs.cache
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.AssemblyInfo.cs
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.csproj.CoreCompileInputs.cache
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.MvcApplicationPartsAssemblyInfo.cache
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.sourcelink.json
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets.build.json
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets.development.json
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets\msbuild.BarraldevDownloader.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets\msbuild.build.BarraldevDownloader.props
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.BarraldevDownloader.props
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.BarraldevDownloader.props
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\scopedcss\bundle\BarraldevDownloader.styles.css
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\Barralde.9257B798.Up2Date
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.dll
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\refint\BarraldevDownloader.dll
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.pdb
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.genruntimeconfig.cache
-C:\Developer\BarraldevDownloader\obj\Debug\net8.0\ref\BarraldevDownloader.dll
 C:\Users\Dhanglerson Dev\BarraldevDownloader\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Dhanglerson Dev\BarraldevDownloader\bin\Debug\net8.0\appsettings.json
 C:\Users\Dhanglerson Dev\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.staticwebassets.runtime.json
@@ -90,3 +57,36 @@ C:\Users\Dhanglerson Dev\BarraldevDownloader\obj\Debug\net8.0\refint\BarraldevDo
 C:\Users\Dhanglerson Dev\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.pdb
 C:\Users\Dhanglerson Dev\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.genruntimeconfig.cache
 C:\Users\Dhanglerson Dev\BarraldevDownloader\obj\Debug\net8.0\ref\BarraldevDownloader.dll
+C:\Developer\BarraldevDownloader\bin\Debug\net8.0\appsettings.Development.json
+C:\Developer\BarraldevDownloader\bin\Debug\net8.0\appsettings.json
+C:\Developer\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.staticwebassets.runtime.json
+C:\Developer\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.exe
+C:\Developer\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.deps.json
+C:\Developer\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.runtimeconfig.json
+C:\Developer\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.dll
+C:\Developer\BarraldevDownloader\bin\Debug\net8.0\BarraldevDownloader.pdb
+C:\Developer\BarraldevDownloader\bin\Debug\net8.0\AngleSharp.dll
+C:\Developer\BarraldevDownloader\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Developer\BarraldevDownloader\bin\Debug\net8.0\Xabe.FFmpeg.dll
+C:\Developer\BarraldevDownloader\bin\Debug\net8.0\YoutubeExplode.dll
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.csproj.AssemblyReference.cache
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.GeneratedMSBuildEditorConfig.editorconfig
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.AssemblyInfoInputs.cache
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.AssemblyInfo.cs
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.csproj.CoreCompileInputs.cache
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.MvcApplicationPartsAssemblyInfo.cache
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.sourcelink.json
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets.build.json
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets.development.json
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets\msbuild.BarraldevDownloader.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets\msbuild.build.BarraldevDownloader.props
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.BarraldevDownloader.props
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.BarraldevDownloader.props
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\scopedcss\bundle\BarraldevDownloader.styles.css
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\Barralde.9257B798.Up2Date
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.dll
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\refint\BarraldevDownloader.dll
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.pdb
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\BarraldevDownloader.genruntimeconfig.cache
+C:\Developer\BarraldevDownloader\obj\Debug\net8.0\ref\BarraldevDownloader.dll

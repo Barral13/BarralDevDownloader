@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BarraldevDownloader")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3179b10f68dd5808607c3e96a29b18af2bc9e757")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b107f845381ed3e29bb36f383867fc7f776ae8d")]
 [assembly: System.Reflection.AssemblyProductAttribute("BarraldevDownloader")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BarraldevDownloader")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

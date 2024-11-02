@@ -1,23 +1,23 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\wwwroot\\Logo.png",
+      "Id": "C:\\Developer\\BarraldevDownloader\\wwwroot\\Logo.png",
       "PackagePath": "staticwebassets\\Logo.png"
     },
     {
-      "Id": "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\wwwroot\\app.css",
+      "Id": "C:\\Developer\\BarraldevDownloader\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Developer\\BarraldevDownloader\\wwwroot\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Developer\\BarraldevDownloader\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Dhanglerson Dev\\BarraldevDownloader\\wwwroot\\favicon.png",
+      "Id": "C:\\Developer\\BarraldevDownloader\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {

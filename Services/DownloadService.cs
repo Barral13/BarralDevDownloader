@@ -12,7 +12,7 @@ public class DownloadService
     {
         _youtubeClient = youtubeClient;
     }
-    
+
     public async Task<string> DownloadAudioAsync(string videoUrl)
     {
         ValidateVideoUrl(videoUrl);
@@ -29,14 +29,18 @@ public class DownloadService
             throw new InvalidOperationException("Nenhum stream de áudio disponível.");
         }
 
-        // Cria o diretório para os áudios, se não existir
-        var audioDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "Musicas");
-        Directory.CreateDirectory(audioDirectory); // Cria a pasta se não existir
+        // Define o caminho para a pasta 'Downloads'
+        var downloadDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
 
-        var filePath = Path.Combine(audioDirectory, $"{video.Title}.mp3");
-        await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, filePath);
+        var filePath = Path.Combine(downloadDirectory, $"{SanitizeFileName(video.Title)}.mp3");
 
-        return filePath; // Retorna o caminho do arquivo baixado
+        // Verifica se o arquivo já existe
+        if (!File.Exists(filePath))
+        {
+            await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, filePath);
+        }
+
+        return filePath;
     }
 
     public async Task<string> DownloadVideoAsync(string videoUrl)
@@ -60,47 +64,62 @@ public class DownloadService
             throw new InvalidOperationException("Nenhum stream de vídeo ou áudio disponível.");
         }
 
-        // Cria o diretório para os vídeos, se não existir
-        var videoDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "Videos");
-        Directory.CreateDirectory(videoDirectory); // Cria a pasta se não existir
+        var downloadDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+        var videoFilePath = Path.Combine(downloadDirectory, $"{SanitizeFileName(video.Title)}_video.mp4");
+        var audioFilePath = Path.Combine(downloadDirectory, $"{SanitizeFileName(video.Title)}_audio.mp3");
+        var finalFilePath = Path.Combine(downloadDirectory, $"{SanitizeFileName(video.Title)}.mp4");
 
-        var videoFilePath = Path.Combine(videoDirectory, $"{video.Title}_video.mp4");
-        var audioFilePath = Path.Combine(videoDirectory, $"{video.Title}_audio.mp3");
-        var finalFilePath = Path.Combine(videoDirectory, $"{video.Title}.mp4");
+        if (!File.Exists(videoFilePath))
+        {
+            await _youtubeClient.Videos.Streams.DownloadAsync(videoStreamInfo, videoFilePath);
+        }
 
-        await _youtubeClient.Videos.Streams.DownloadAsync(videoStreamInfo, videoFilePath);
-        await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, audioFilePath);
+        if (!File.Exists(audioFilePath))
+        {
+            await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, audioFilePath);
+        }
 
+        // Cria IStream a partir dos arquivos baixados
+        var videoStream = await FFmpeg.GetMediaInfo(videoFilePath);
+        var audioStream = await FFmpeg.GetMediaInfo(audioFilePath);
+
+        var videoTrack = videoStream.VideoStreams.First();
+        var audioTrack = audioStream.AudioStreams.First();
+        
+        // Converte os arquivos de vídeo e áudio em um único arquivo
         await FFmpeg.Conversions.New()
-            .AddParameter($"-i \"{videoFilePath}\"")
-            .AddParameter($"-i \"{audioFilePath}\"")
-            .AddParameter("-c:v copy -c:a aac -strict experimental")
-            .AddParameter($"\"{finalFilePath}\"")
+            .AddStream<IStream>(videoTrack, audioTrack) // Especifica explicitamente o tipo IStream
+            .SetOutput(finalFilePath)
             .Start();
 
+        // Remove os arquivos intermediários
         File.Delete(videoFilePath);
         File.Delete(audioFilePath);
 
-        return finalFilePath; // Retorna o caminho do arquivo baixado
+        return finalFilePath;
     }
 
-    private void ValidateVideoUrl(string videoUrl)
+    private void ValidateVideoUrl(string url)
     {
-        if (string.IsNullOrWhiteSpace(videoUrl))
+        if (string.IsNullOrWhiteSpace(url) || !Uri.IsWellFormedUriString(url, UriKind.Absolute))
         {
-            throw new ArgumentException("URL do vídeo é obrigatória.", nameof(videoUrl));
-        }
-
-        if (ExtractVideoId(videoUrl) == null)
-        {
-            throw new ArgumentException("URL do vídeo é inválida.", nameof(videoUrl));
+            throw new ArgumentException("URL inválida.");
         }
     }
 
-    private string? ExtractVideoId(string url)
+    private string ExtractVideoId(string url)
     {
-        var regex = new Regex(@"(?<=v=|\/)([a-zA-Z0-9_-]{11})");
-        var match = regex.Match(url);
-        return match.Success ? match.Value : null;
+        var match = Regex.Match(url, @"(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^""&?\/\s]{11})");
+        if (!match.Success)
+        {
+            throw new ArgumentException("Não foi possível extrair o ID do vídeo.");
+        }
+
+        return match.Groups[1].Value;
+    }
+
+    private string SanitizeFileName(string name)
+    {
+        return Regex.Replace(name, @"[<>:""/\\|?*]", "_");
     }
 }
