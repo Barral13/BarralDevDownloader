@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BarraldevDownloader")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed5f2dfcb35e0ce15577f9bcaadee522a3624323")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+142eeab10d0032d85ef7cf28cea7aeb097d0a731")]
 [assembly: System.Reflection.AssemblyProductAttribute("BarraldevDownloader")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BarraldevDownloader")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
