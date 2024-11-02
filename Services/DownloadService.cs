@@ -5,10 +5,18 @@ using YoutubeExplode;
 public class DownloadService
 {
     private readonly YoutubeClient _youtubeClient;
+    private readonly string _musicasDirectory;
+    private readonly string _videosDirectory;
 
     public DownloadService(YoutubeClient youtubeClient)
     {
         _youtubeClient = youtubeClient;
+
+        // Obter os diretórios de download a partir de variáveis de ambiente
+        _musicasDirectory = Environment.GetEnvironmentVariable("MUSICAS_DIRECTORY") ?? "/downloads/musicas";
+        _videosDirectory = Environment.GetEnvironmentVariable("VIDEOS_DIRECTORY") ?? "/downloads/videos";
+
+        CreateDirectories();
     }
 
     public async Task<string> DownloadAudioAsync(string videoUrl)
@@ -27,10 +35,8 @@ public class DownloadService
             throw new InvalidOperationException("Nenhum stream de áudio disponível.");
         }
 
-        // Define o diretório Downloads de forma manual
-        string musicasDirectory = GetMusicasDirectory();
         var cleanedTitle = CleanFileName(video.Title);
-        var filePath = Path.Combine(musicasDirectory, $"{cleanedTitle}.mp3");
+        var filePath = Path.Combine(_musicasDirectory, $"{cleanedTitle}.mp3");
         await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, filePath);
 
         return filePath; // Retorna o caminho do arquivo baixado
@@ -57,14 +63,12 @@ public class DownloadService
             throw new InvalidOperationException("Nenhum stream de vídeo ou áudio disponível.");
         }
 
-        // Define o diretório Downloads de forma manual
-        string videosDirectory = GetVideosDirectory();
         var cleanedTitle = CleanFileName(video.Title);
 
         // Define os caminhos dos arquivos temporários
-        var videoFilePath = Path.Combine(videosDirectory, $"{cleanedTitle}_video.mp4");
-        var audioFilePath = Path.Combine(videosDirectory, $"{cleanedTitle}_audio.mp3");
-        var finalFilePath = Path.Combine(videosDirectory, $"{cleanedTitle}.mp4");
+        var videoFilePath = Path.Combine(_videosDirectory, $"{cleanedTitle}_video.mp4");
+        var audioFilePath = Path.Combine(_videosDirectory, $"{cleanedTitle}_audio.mp3");
+        var finalFilePath = Path.Combine(_videosDirectory, $"{cleanedTitle}.mp4");
 
         await _youtubeClient.Videos.Streams.DownloadAsync(videoStreamInfo, videoFilePath);
         await _youtubeClient.Videos.Streams.DownloadAsync(audioStreamInfo, audioFilePath);
@@ -106,34 +110,21 @@ public class DownloadService
 
     private string CleanFileName(string fileName)
     {
-        // Remove caracteres inválidos do nome do arquivo
         var invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
         var regex = new Regex($"[{invalidChars}]");
         return regex.Replace(fileName, "_"); // Substitui caracteres inválidos por "_"
     }
 
-    private string GetMusicasDirectory()
+    private void CreateDirectories()
     {
-        string musicasDirectory = "/downloads/musicas"; // Caminho fixo para o contêiner
-
-        if (!Directory.Exists(musicasDirectory))
+        if (!Directory.Exists(_musicasDirectory))
         {
-            Directory.CreateDirectory(musicasDirectory); // Cria a pasta "Musicas" se não existir
+            Directory.CreateDirectory(_musicasDirectory); // Cria a pasta "Musicas" se não existir
         }
 
-        return musicasDirectory;
-    }
-
-    private string GetVideosDirectory()
-    {
-        string videosDirectory = "/downloads/videos"; // Caminho fixo para o contêiner
-
-        if (!Directory.Exists(videosDirectory))
+        if (!Directory.Exists(_videosDirectory))
         {
-            Directory.CreateDirectory(videosDirectory); // Cria a pasta "Videos" se não existir
+            Directory.CreateDirectory(_videosDirectory); // Cria a pasta "Videos" se não existir
         }
-
-        return videosDirectory;
     }
-
 }
