@@ -12,6 +12,10 @@ RUN dotnet publish -c Release -o /app/publish
 # Usar uma imagem do .NET ASP.NET Core Runtime 8.0 para a fase final
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
+
+# Criar diretórios para downloads, músicas e vídeos
+RUN mkdir -p /downloads/musicas /downloads/videos
+
 COPY --from=build /app/publish .
 
 # Expor a porta 80 para acesso externo

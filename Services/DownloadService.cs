@@ -114,8 +114,7 @@ public class DownloadService
 
     private string GetMusicasDirectory()
     {
-        string downloadsDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
-        string musicasDirectory = Path.Combine(downloadsDirectory, "Musicas");
+        string musicasDirectory = "/downloads/musicas"; // Caminho fixo para o contêiner
 
         if (!Directory.Exists(musicasDirectory))
         {
@@ -127,8 +126,7 @@ public class DownloadService
 
     private string GetVideosDirectory()
     {
-        string downloadsDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
-        string videosDirectory = Path.Combine(downloadsDirectory, "Videos");
+        string videosDirectory = "/downloads/videos"; // Caminho fixo para o contêiner
 
         if (!Directory.Exists(videosDirectory))
         {
@@ -137,4 +135,5 @@ public class DownloadService
 
         return videosDirectory;
     }
+
 }
